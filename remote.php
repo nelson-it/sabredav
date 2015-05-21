@@ -13,11 +13,11 @@ date_default_timezone_set('Europe/Berlin');
 
 // If you want to run the SabreDAV server in a custom location (using mod_rewrite for instance)
 // You can override the baseUri here.
-$baseUri = '/dav';
+$baseUri = '/erpdav';
 
 /* Database */
-$pdo = new PDO('pgsql:dbname=erpdb','mneerpdavdba');
-$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+//$pdo = new PDO('pgsql:dbname=erpdb','mneerpdavdba');
+//$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
 //Mapping PHP errors to exceptions
 function exception_error_handler($errno, $errstr, $errfile, $errline ) {
@@ -27,10 +27,10 @@ set_error_handler("exception_error_handler");
 // Files we need
 require_once 'vendor/autoload.php';
 // Backends
-$authBackend = new MneSabre\DAV\Auth\Backend\MyAuth;
-$carddavBackend   = new MneSabre\CardDAV\Backend\PDO($pdo, 'mne_sabredav.addressbooks', 'mne_sabredav.cards', 'mne_sabredav.addressbookchanges');
-$calendarBackend = new MneSabre\CalDAV\Backend\PDO($pdo, 'mne_sabredav.calendars', 'mne_sabredav.calendarobjects', 'mne_sabredav.calendarchanges');
-$principalBackend = new Sabre\DAVACL\PrincipalBackend\PDO($pdo, 'mne_sabredav.principals', 'mne_sabredav.groupmembers');
+$carddavBackend   = new MneSabre\CardDAV\Backend\PDO( 'mne_sabredav.addressbooks', 'mne_sabredav.cards', 'mne_sabredav.addressbookchanges');
+$calendarBackend = new MneSabre\CalDAV\Backend\PDO( 'mne_sabredav.calendars', 'mne_sabredav.calendarobjects', 'mne_sabredav.calendarchanges');
+$principalBackend = new MneSabre\DAVACL\PrincipalBackend\PDO( 'mne_sabredav.principals', 'mne_sabredav.groupmembers');
+$authBackend = new MneSabre\DAV\Auth\Backend\MyAuth([$carddavBackend,$calendarBackend,$principalBackend]);
 
 // Directory structure
 $tree = [

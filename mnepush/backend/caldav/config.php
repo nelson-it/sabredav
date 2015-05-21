@@ -52,7 +52,7 @@ define('CALDAV_SERVER', 'http://localhost');
 define('CALDAV_PORT', '80');
 
 // Path
-define('CALDAV_PATH', '/dav/calendars/%u/');
+define('CALDAV_PATH', '/erpdav/calendars/%u/');
 
 // Default CalDAV folder (calendar folder/principal). This will be marked as the default calendar in the mobile
 define('CALDAV_PERSONAL', 'mneerp');

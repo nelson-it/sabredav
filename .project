@@ -31,4 +31,16 @@
 		<nature>org.eclipse.php.core.PHPNature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>erp_dav</name>
+			<type>2</type>
+			<location>/net/puck/export/home/manny/web/erp_dav</location>
+		</link>
+		<link>
+			<name>erp_push</name>
+			<type>2</type>
+			<location>/net/puck/export/home/manny/web/erp_push</location>
+		</link>
+	</linkedResources>
 </projectDescription>

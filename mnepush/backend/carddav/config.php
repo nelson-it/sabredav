@@ -63,7 +63,7 @@ define('CARDDAV_PORT', '80');
 // %u: replaced with the username
 // %d: replaced with the domain
 //   Add the trailing /
-define('CARDDAV_PATH', '/dav/addressbooks/%u');
+define('CARDDAV_PATH', '/erpdav/addressbooks/%u');
 
 
 // Server path to the default addressbook
@@ -71,7 +71,7 @@ define('CARDDAV_PATH', '/dav/addressbooks/%u');
 // %u: replaced with the username
 // %d: replaced with the domain
 //   Add the trailing /
-define('CARDDAV_DEFAULT_PATH', '/dav/%u/addressbooks/mneerp');
+define('CARDDAV_DEFAULT_PATH', '/erpdav/%u/addressbooks/mneerp');
 
 // Server path to the GAL addressbook. This addressbook is readonly and searchable by the user, but it will NOT be synced.
 // If you don't want GAL, comment it
