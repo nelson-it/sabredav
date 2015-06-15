@@ -3,6 +3,7 @@
 DAVDIR=erp_dav
 PUSHDIR=erp_push
 
+rm -rf ../../web/$DAVDIR
 rm -rf ../../web/$PUSHDIR
 
 mkdir -p ../../web/$DAVDIR

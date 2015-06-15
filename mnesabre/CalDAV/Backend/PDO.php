@@ -39,7 +39,7 @@ class PDO extends \Sabre\CalDAV\Backend\PDO {
         
         if ($syncToken) {
             
-            $query = "SELECT uri, operation FROM " . $this->calendarChangesTableName . " WHERE synctoken >= ? AND synctoken <= ? AND calendarid = ? ORDER BY synctoken";
+            $query = "SELECT uri, operation FROM " . $this->calendarChangesTableName . " WHERE synctoken >= ? AND calendarid = ? ORDER BY synctoken";
             if ($limit > 0)
                 $query .= " LIMIT " . (int) $limit;
                 
@@ -47,7 +47,6 @@ class PDO extends \Sabre\CalDAV\Backend\PDO {
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([
                     $syncToken,
-                    $currentToken,
                     $calendarId
             ]);
             

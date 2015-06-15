@@ -36,15 +36,14 @@ class PDO extends \Sabre\CardDAV\Backend\PDO {
         
         if ($syncToken) {
             
-            $query = "SELECT uri, operation FROM " . $this->addressBookChangesTableName . " WHERE synctoken >= ? AND synctoken <= ? AND addressbookid = ? ORDER BY synctoken";
-            if ($limit > 0)
+           $query = "SELECT uri, operation FROM " . $this->addressBookChangesTableName . " WHERE synctoken >= ? AND addressbookid = ? ORDER BY synctoken";
+           if ($limit > 0)
                 $query .= " LIMIT " . (int) $limit;
                 
                 // Fetching all changes
             $stmt = $this->pdo->prepare($query);
             $stmt->execute([
                     $syncToken,
-                    $currentToken,
                     $addressBookId
             ]);
             
