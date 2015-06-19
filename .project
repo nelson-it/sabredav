@@ -33,14 +33,15 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>erp_dav</name>
+			<name>installation</name>
 			<type>2</type>
-			<location>/net/puck/export/home/manny/web/erp_dav</location>
-		</link>
-		<link>
-			<name>erp_push</name>
-			<type>2</type>
-			<location>/net/puck/export/home/manny/web/erp_push</location>
+			<locationURI>HOME/web</locationURI>
 		</link>
 	</linkedResources>
+	<variableList>
+		<variable>
+			<name>HOME</name>
+			<value>file:/net/cordelia/export/home/manny</value>
+		</variable>
+	</variableList>
 </projectDescription>
