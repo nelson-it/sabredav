@@ -35,13 +35,7 @@
 		<link>
 			<name>installation</name>
 			<type>2</type>
-			<locationURI>HOME/web</locationURI>
+			<locationURI>WORKSPACE_LOC/data/dav</locationURI>
 		</link>
 	</linkedResources>
-	<variableList>
-		<variable>
-			<name>HOME</name>
-			<value>file:/net/cordelia/export/home/manny</value>
-		</variable>
-	</variableList>
 </projectDescription>

@@ -1,22 +1,23 @@
 #!/bin/bash
 
+BASEDIR=../data/dav
 DAVDIR=erp_dav
 PUSHDIR=erp_push
 
-rm -rf ../../web/$DAVDIR
-rm -rf ../../web/$PUSHDIR
+rm -rf $BASEDIR/$DAVDIR
+rm -rf $BASEDIR/$PUSHDIR
 
-mkdir -p ../../web/$DAVDIR
-mkdir -p ../../web/$PUSHDIR
+mkdir -p $BASEDIR/$DAVDIR
+mkdir -p $BASEDIR/$PUSHDIR
 
-tar -cf - mnesabre composer.json composer.phar remote.php | ( cd ../../web/$DAVDIR; tar -xvf - )
+tar -cf - mnesabre composer.json composer.phar remote.php | ( cd $BASEDIR/$DAVDIR; tar -xvf - )
 
-( cd ../../web/$DAVDIR;  chmod +x composer.phar; ./composer.phar install )
+( cd $BASEDIR/$DAVDIR;  chmod +x composer.phar; ./composer.phar install )
 
-( cd ../../web/$PUSHDIR;  git clone https://github.com/fmbiete/Z-Push-contrib.git .; )
-( cd mnepush; tar -cf - . ) | ( cd ../../web/$PUSHDIR; tar -xvf - )
+( cd $BASEDIR/$PUSHDIR;  git clone https://github.com/fmbiete/Z-Push-contrib.git .; )
+( cd mnepush; tar -cf - . ) | ( cd $BASEDIR/$PUSHDIR; tar -xvf - )
 
  
-chown -R www-data:manny ../../web;
-chmod -R g+w ../../web;
+chown -R www-data:manny $BASEDIR
+chmod -R g+w $BASEDIR
 
