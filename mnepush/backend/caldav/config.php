@@ -45,10 +45,13 @@
 //  BackendCalDAV settings
 // ************************
 
-// Server address
-define('CALDAV_SERVER', 'http://localhost');
+// Server protocol: http or https
+define('CALDAV_PROTOCOL', 'http');
 
-// Port
+// Server name
+define('CALDAV_SERVER', 'localhost');
+
+// Server port
 define('CALDAV_PORT', '80');
 
 // Path
