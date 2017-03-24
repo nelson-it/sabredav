@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ZPUSHDIR=../z-push/src
 BASEDIR=www
 DAVDIR=erp_dav
 PUSHDIR=erp_push
@@ -14,8 +15,15 @@ echo 'copy mnesabre'
 tar -cf - mnesabre composer.json composer.phar remote.php | ( cd $BASEDIR/$DAVDIR; tar -xf - )
 
 ( cd $BASEDIR/$DAVDIR;  chmod +x composer.phar; ./composer.phar install )
+( cd $ZPUSHDIR; tar -cf - . ) | ( cd $BASEDIR/$PUSHDIR;  tar -xf -; )
 
-( cd $BASEDIR/$PUSHDIR;  git clone https://github.com/fmbiete/Z-Push-contrib.git .; )
+for file in `cd sabre; find . -type f`
+do
+    echo $file
+    if [ -f $BASEDIR/$DAVDIR/$file ]; then
+        mv $BASEDIR/$DAVDIR/$file $BASEDIR/$DAVDIR/$file.orig
+    fi
+done
 
 for file in `cd mnepush; find . -type f`
 do
@@ -24,6 +32,9 @@ do
         mv $BASEDIR/$PUSHDIR/$file $BASEDIR/$PUSHDIR/$file.orig
     fi
 done
+
+echo 'copy sabre patch'
+( cd sabre; tar -cf - . ) | ( cd $BASEDIR/$DAVDIR; tar -xf - )
 
 echo 'copy mnepush'
 ( cd mnepush; tar -cf - . ) | ( cd $BASEDIR/$PUSHDIR; tar -xf - )
