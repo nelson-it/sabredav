@@ -9,6 +9,8 @@ This server features CalDAV support
 */
 
 // settings
+ini_set('log_errors', 1);
+ini_set("error_log", "/var/log/mne/dav.log");
 date_default_timezone_set('Europe/Berlin');
 
 // If you want to run the SabreDAV server in a custom location (using mod_rewrite for instance)
@@ -28,7 +30,7 @@ set_error_handler("exception_error_handler");
 require_once 'vendor/autoload.php';
 // Backends
 $carddavBackend   = new MneSabre\CardDAV\Backend\PDO( 'mne_sabredav.addressbooks', 'mne_sabredav.cards', 'mne_sabredav.addressbookchanges');
-$calendarBackend = new MneSabre\CalDAV\Backend\PDO( 'mne_sabredav.calendars', 'mne_sabredav.calendarobjects', 'mne_sabredav.calendarchanges');
+$calendarBackend = new MneSabre\CalDAV\Backend\PDO( 'mne_sabredav.calendarinstances', 'mne_sabredav.calendars', 'mne_sabredav.calendarobjects', 'mne_sabredav.calendarchanges');
 $principalBackend = new MneSabre\DAVACL\PrincipalBackend\PDO( 'mne_sabredav.principals', 'mne_sabredav.groupmembers');
 $authBackend = new MneSabre\DAV\Auth\Backend\MyAuth([$carddavBackend,$calendarBackend,$principalBackend]);
 

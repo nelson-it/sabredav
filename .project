@@ -31,11 +31,4 @@
 		<nature>org.eclipse.php.core.PHPNature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>installation</name>
-			<type>2</type>
-			<locationURI>WORKSPACE_LOC/data/dav</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>

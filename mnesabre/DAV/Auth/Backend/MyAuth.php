@@ -64,6 +64,7 @@ class MyAuth implements \Sabre\DAV\Auth\Backend\BackendInterface {
             return [true, $this->principalPrefix . $userpass[0]];
         }
         
+        $auth->requireLogin();
         throw new \Exception('no dav access');
         
     }
