@@ -57,12 +57,9 @@ class MyAuth implements \Sabre\DAV\Auth\Backend\BackendInterface {
         if ($this->pdo->query($sql) === false)
             throw new \Exception($this->pdo->errorInfo()[2]);
         
-        foreach ($this->pdo->query($sql) as $row) {
-            $this->currentUser = $userpass[0];
-            foreach ($this->pdoclients as $p)
-                $p->setPDO($this->pdo);
-            return [true, $this->principalPrefix . $userpass[0]];
-        }
+        foreach ($this->pdoclients as $p)
+           $p->setPDO($this->pdo);
+        return [true, $this->principalPrefix . $userpass[0]];
         
         $auth->requireLogin();
         throw new \Exception('no dav access');
