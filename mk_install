@@ -39,6 +39,6 @@ echo 'copy sabre patch'
 echo 'copy mnepush'
 ( cd mnepush; tar -cf - . ) | ( cd $BASEDIR/$PUSHDIR; tar -xf - )
  
-chown -R www-data:manny $BASEDIR
-chmod -R g+w $BASEDIR
+echo chown -R www-data:manny $BASEDIR
+echo chmod -R g+w $BASEDIR
 
