@@ -12,7 +12,7 @@ mkdir -p $BASEDIR/$DAVDIR
 mkdir -p $BASEDIR/$PUSHDIR
 
 echo 'copy mnesabre'
-tar -cf - mnesabre composer.json composer.phar remote.php | ( cd $BASEDIR/$DAVDIR; tar -xf - )
+tar -cf - mnesabre composer.json composer.phar remote.php config.php | ( cd $BASEDIR/$DAVDIR; tar -xf - )
 
 ( cd $BASEDIR/$DAVDIR;  chmod +x composer.phar; ./composer.phar install )
 ( cd $ZPUSHDIR; tar -cf - . ) | ( cd $BASEDIR/$PUSHDIR;  tar -xf -; )

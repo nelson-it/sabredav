@@ -10,6 +10,7 @@ class MyAuth implements \Sabre\DAV\Auth\Backend\BackendInterface {
     protected $pdo;
     protected $pdoclients = array();
     protected $principalPrefix = 'principals/';
+    protected $database;
 
     function getCurrentUser () {
 
@@ -21,9 +22,10 @@ class MyAuth implements \Sabre\DAV\Auth\Backend\BackendInterface {
         return $this->pdo;
     }
 
-    function __construct ($pdoclients) {
+    function __construct ($pdoclients, $database) {
 
         $this->pdoclients = $pdoclients;
+        $this->database = $database;
     }
 
     function check(RequestInterface $request, ResponseInterface $response) {
@@ -45,7 +47,7 @@ class MyAuth implements \Sabre\DAV\Auth\Backend\BackendInterface {
         
         $this->pdo = null;
         try {
-            $this->pdo = new \PDO('pgsql:dbname=erpdb', $userpass[0], $userpass[1]);
+            $this->pdo = new \PDO($this->database, $userpass[0], $userpass[1]);
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
         catch (\PDOException $e) {
