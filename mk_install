@@ -42,3 +42,12 @@ echo 'copy mnepush'
 echo chown -R www-data:manny $BASEDIR
 echo chmod -R g+w $BASEDIR
 
+touch /var/log/mne/erp-z-push.log
+touch /var/log/mne/erp-z-push-error.log
+
+chown www-data /var/log/mne/erp-z-push.log
+chown www-data /var/log/mne/erp-z-push-error.log
+
+mkdir -p /var/mne/erp/lib/z-push
+chown www-data:www-data /var/mne/erp/lib/z-push
+

@@ -68,7 +68,7 @@
  *           State migration script is available, more informations: https://wiki.z-hub.io/x/xIAa
  */
     define('STATE_MACHINE', 'FILE');
-    define('STATE_DIR', '/var/lib/z-push/');
+    define('STATE_DIR', '/var/mne/erp/lib/z-push/');
 
 /**********************************************************************************
  *  IPC - InterProcessCommunication
@@ -123,9 +123,9 @@
     $specialLogUsers = array();
 
     // Filelog settings
-    define('LOGFILEDIR', '/var/log/z-push/');
-    define('LOGFILE', LOGFILEDIR . 'z-push.log');
-    define('LOGERRORFILE', LOGFILEDIR . 'z-push-error.log');
+    define('LOGFILEDIR', '/var/log/mne/');
+    define('LOGFILE', LOGFILEDIR . 'erp-z-push.log');
+    define('LOGERRORFILE', LOGFILEDIR . 'erp-z-push-error.log');
 
     // Syslog settings
     // false will log to local syslog, otherwise put the remote syslog IP here
