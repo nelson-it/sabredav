@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ZPUSHDIR=../clone/z-push/src
+ZPUSHDIR=../clone/Z-Push/src
 BASEDIR=www
 DAVDIR=erp_dav
 PUSHDIR=erp_push
