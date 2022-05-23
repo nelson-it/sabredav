@@ -28,7 +28,8 @@ class BackendMneCombined extends BackendCombined  {
      *
      * @access public
      */
-    public function BackendMneCombined() {
+    public function __construct() {
+        Backend::__construct();
         $this->config = BackendMneCombinedConfig::GetBackendMneCombinedConfig();
 
         $backend_values = array_unique(array_values($this->config['folderbackend']));
