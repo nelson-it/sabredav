@@ -52,7 +52,7 @@ class MyAuth implements \Sabre\DAV\Auth\Backend\BackendInterface {
         }
         catch (\PDOException $e) {
             $auth->requireLogin();
-            throw new \Sabre\DAV\Exception\NotAuthenticated('Username or password does not match ' . $e->getMessage());
+            throw new \Sabre\DAV\Exception\NotAuthenticated('Username or password does not match ' );
         }
         
         $sql = "SELECT * FROM mne_catalog.accessgroup WHERE member = '" . $userpass[0] . "' AND \"group\" = 'erpdav'";
